@@ -2,7 +2,7 @@ import java.io.*;
 import java.util.Scanner;
 
 public class Sorting {
-    public static void main(String[] args) throws FileNotFoundException {
+    public static void main(String[] args) {
         File file1K = new File("input_files/1K_random_input.txt");
         File file10K = new File("input_files/10K_random_input.txt");
         File file100K = new File("input_files/100K_random_input.txt");
@@ -18,7 +18,7 @@ public class Sorting {
 
     }
 
-    public static void sortSelection(int i,File file,int size,boolean isIncreasing,boolean isRandom) throws FileNotFoundException {
+    public static void sortSelection(int i,File file,int size,boolean isIncreasing,boolean isRandom) {
         int[] arr = new int[size];
 
         if (isRandom) {
@@ -96,11 +96,16 @@ public class Sorting {
         writeArrToFile(arr, fileName);
     }
 
-    public static void readFileToArr(int[] arr, File file) throws FileNotFoundException {
-        Scanner scanner = new Scanner(file);
-        for (int i = 0; i < arr.length; i++) {
-            arr[i] = scanner.nextInt();
+    public static void readFileToArr(int[] arr, File file) {
+        try {
+            Scanner scanner = new Scanner(file);
+            for (int i = 0; i < arr.length; i++) {
+                arr[i] = scanner.nextInt();
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found");
         }
+
     }
 
     public static void writeArrToFile(int[] arr, String fileName) {
@@ -110,7 +115,7 @@ public class Sorting {
                 bufferedWriter.newLine();
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println("Error writing to file");
         }
     }
 
@@ -161,7 +166,7 @@ public class Sorting {
         }
         int i = 0, j = 0, k = p;
         while (i < n1 && j < n2) {
-            if (isIncreasing ? leftArr[i] <= rightArr[j] : leftArr[i] >= rightArr[j])  {//gönderilen boolen değerine göre artan veya azalan sırada sıralanır.
+            if (isIncreasing ? leftArr[i] <= rightArr[j] : leftArr[i] >= rightArr[j])  {//gönderilen boolean değerine göre artan veya azalan sırada sıralanır.
                 array[k++] = leftArr[i++];
             } else {
                 array[k++] = rightArr[j++];

@@ -212,7 +212,7 @@ public class Sorting {
         for(int i = n/2 - 1; i >= 0; i--){
             heapify(array, i, n, isIncreasing);
         }
-        for(int i = n - 1; i >= 0; i--){
+        for(int i = n; i >= 0; i--){
             int temp = array[0];
             array[0] = array[i];
             array[i] = temp;

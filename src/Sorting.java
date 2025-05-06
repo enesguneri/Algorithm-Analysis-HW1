@@ -3,9 +3,9 @@ import java.util.Scanner;
 
 public class Sorting {
     public static void main(String[] args) {
-        File file1K = new File("input_files/1K_random_input.txt");
-        File file10K = new File("input_files/10K_random_input.txt");
-        File file100K = new File("input_files/100K_random_input.txt");
+        File file1K = new File("1K_random_input.txt");
+        File file10K = new File("10K_random_input.txt");
+        File file100K = new File("100K_random_input.txt");
 
         for (int i = 1; i <= 4; i++) {
             sortSelection(i,file1K,1000,true,true);//Reading numbers from file, and sorting array after creating random numbers txt.
@@ -53,7 +53,7 @@ public class Sorting {
 
             }
 
-            String fileName = sortName + "_" + arraySize + "_" + "random" + ".txt";
+            String fileName = sortName + "_" + arraySize + "_" + "random_output.txt";
             writeArrToFile(arr, fileName);
 
         }
@@ -91,7 +91,7 @@ public class Sorting {
             arraySize = "100K";
         System.out.println(arraySize + " array has been sorted in " + (isIncreasing ? "increasing" : "decreasing") + " order with " + sortName + " in " + calculateRunningTime(startTime) + " ms");
 
-        String fileName = sortName + "_" + arraySize + "_" + (isIncreasing ? "increasing" : "decreasing") + ".txt";
+        String fileName = sortName + "_" + arraySize + "_" + (isIncreasing ? "increasing" : "decreasing") + "_output" +".txt";
 
         writeArrToFile(arr, fileName);
     }
